@@ -16,6 +16,11 @@ class PostViewSet(viewsets. ModelViewSet):
     # def post_create(self, serializer):
     #     serializer.save(author=self.request.user)
 
+# class CommentsCreateAPIView(generics.CreateAPIView):
+#     queryset = Comments.objects.all()
+#     serializer_class = CommentsSerializer
+#     permission_classes = [IsAuthenticated]
+
 
 
 
