@@ -12,6 +12,12 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class CommentsSerializer(serializers.ModelSerializer):
+    comment = serializers.SerializerMethodField()
+    commenter = serializers.SerializerMethodField()
+    pub_date = serializers.SerializerMethodField()
 
     class Meta:
         model = Comments
+        exclude = ['posted_id']
+
+    
