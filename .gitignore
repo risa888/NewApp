@@ -1,0 +1,9 @@
+__pycache__/
+media/
+migrations/
+venv/
+requirements.txt
+uploads/
+__init__.py
+db.sqlite3
+
