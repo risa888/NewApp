@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'crispy_forms',
 
 
-    'original'
-    # 'users'
+    'original',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -155,4 +155,4 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
-# AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'users.CustomUser'

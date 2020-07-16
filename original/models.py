@@ -1,15 +1,21 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+from django.conf import settings
 # Create your models here.
 
 
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               on_delete=models.CASCADE,
+                               related_name="post_author")
+
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
     caption = models.TextField(blank=True, null=True)
-    likes = models.ManyToManyField(User, related_name='liker',blank=True)
-    follow = models.ManyToManyField(User, related_name='follower')
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                   related_name="liker")
+
+    follow = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                    related_name="follow_ppl")
+
     published_date = models.DateTimeField(auto_now_add=True)
     # tag_name = models.CharField(max_length=10, blank=True, null=True)
 
@@ -18,8 +24,10 @@ class Post(models.Model):
 
 class Comments(models.Model):
     comment = models.CharField(max_length=500)
-    commenter = models.ForeignKey(User, on_delete=models.CASCADE,
-                                   related_name='commenter')
+    commenter = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                  on_delete=models.CASCADE,
+                                  related_name="commenters")
+
     posted_id = models.ForeignKey(Post, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
 
@@ -30,12 +38,18 @@ class Comments(models.Model):
 class Favorites(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, \
                               related_name='favorite_post')
-    favorite_ppl = models.ForeignKey(User, on_delete=models.CASCADE,)
+    favorite_ppl = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                      on_delete=models.CASCADE,
+                                      related_name="favorite")
+
 
 
 
 class Follow(models.Model):
-    follower = models.ForeignKey(User, on_delete=models.CASCADE)
+    follower = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                 on_delete=models.CASCADE,
+                                 related_name="follower")
+
 
 
 class Tags(models.Model):
