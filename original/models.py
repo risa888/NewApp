@@ -10,10 +10,11 @@ class Post(models.Model):
 
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
     caption = models.TextField(blank=True, null=True)
-    likes = models.ManyToManyField(settings.AUTH_USER_MODEL,
+    slug = models.SlugField(max_length=255,null= True)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,
                                    related_name="liker")
 
-    follow = models.ManyToManyField(settings.AUTH_USER_MODEL,
+    follow = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,
                                     related_name="follow_ppl")
 
     published_date = models.DateTimeField(auto_now_add=True)

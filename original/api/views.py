@@ -1,11 +1,14 @@
 from django.contrib.auth.models import User
 
-from original.api.serializers import PostSerializer
+from original.api.serializers import CommentsSerializer, PostSerializer
 from original.api.permissions import IsAuthorOrReadOnly
-from original.models import Post
+from original.models import Comments, Post
 
 from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated
+
+
+
 
 
 class PostViewSet(viewsets. ModelViewSet):
