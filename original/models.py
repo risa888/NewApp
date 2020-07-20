@@ -9,8 +9,9 @@ class Post(models.Model):
                                related_name="post_author")
 
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
+    title = models.CharField(max_length=50)
     caption = models.TextField(blank=True, null=True)
-    slug = models.SlugField(max_length=255,null= True)
+    slug = models.SlugField(unique=True)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,
                                    related_name="liker")
 
