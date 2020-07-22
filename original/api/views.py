@@ -13,16 +13,17 @@ from rest_framework.permissions import IsAuthenticated
 
 class PostViewSet(viewsets. ModelViewSet):
     queryset = Post.objects.all()
+    lookup_field = 'slug'
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated,IsAuthorOrReadOnly]
 
-    # def post_create(self, serializer):
-    #     serializer.save(author=self.request.user)
+    def post_create(self, serializer):
+        serializer.save(author=self.request.user)
 
-# class CommentsCreateAPIView(generics.CreateAPIView):
-#     queryset = Comments.objects.all()
-#     serializer_class = CommentsSerializer
-#     permission_classes = [IsAuthenticated]
+class CommentsCreateAPIView(generics.CreateAPIView):
+    queryset = Comments.objects.all()
+    serializer_class = CommentsSerializer
+    permission_classes = [IsAuthenticated]
 
 
 
