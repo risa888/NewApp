@@ -17,7 +17,7 @@ class PostViewSet(viewsets. ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated,IsAuthorOrReadOnly]
 
-    def post_create(self, serializer):
+    def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
 class CommentsListCreateAPIView(generics.CreateAPIView):

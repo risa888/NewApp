@@ -36,6 +36,9 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         exclude = ['likes','follow']
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.author)
+
 
     def get_follow_count(self, instance):
         return instance.follow.count()
