@@ -5,18 +5,18 @@ from original.models import Post, Comments
 
 
 class CommentsSerializer(serializers.ModelSerializer):
-    comment = serializers.SerializerMethodField()
+    # comment = serializers.SerializerMethodField()
     
     commenter = serializers.StringRelatedField(read_only=True)
     # pub_date = serializers.SerializerMethodField(read_only=True)
-    post_slug = serializers.SerializerMethodField(read_only=True)
+    post_slug = serializers.SerializerMethodField()
 
     class Meta:
         model = Comments
         exclude = ['posted_id']
 
-    # def get_post_slug(self, instance):
-    #     return instance.post_slug
+    def get_post_slug(self, instance):
+        return instance.posted_id.slug
 
     # def get_comment(self,instance):
     #     return instance.comment()

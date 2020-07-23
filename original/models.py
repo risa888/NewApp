@@ -5,7 +5,7 @@ from django.conf import settings
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
-                               on_delete=models.CASCADE,
+                               on_delete=models.CASCADE,null=True,
                                related_name="post_author")
 
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
