@@ -30,7 +30,8 @@ class Comments(models.Model):
                                   on_delete=models.CASCADE,
                                   related_name="commenters")
 
-    posted_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    posted_id = models.ForeignKey(Post, on_delete=models.CASCADE,
+                                   related_name='comments')
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
