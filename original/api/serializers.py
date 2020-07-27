@@ -5,15 +5,17 @@ from original.models import Post, Comments
 
 
 class CommentsSerializer(serializers.ModelSerializer):
-    # comment = serializers.SerializerMethodField()
     
     commenter = serializers.StringRelatedField(read_only=True)
-    # pub_date = serializers.SerializerMethodField(read_only=True)
+    pub_date = serializers.SerializerMethodField()
     post_slug = serializers.SerializerMethodField()
 
     class Meta:
         model = Comments
         exclude = ['posted_id']
+
+    def get_pub_date(self, instance):
+        return instance.pub_date.strftime("%y/%m/%d %H:%M")
 
     def get_post_slug(self, instance):
         return instance.posted_id.slug
