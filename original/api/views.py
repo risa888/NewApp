@@ -45,6 +45,11 @@ class CommentsListAPIView(generics.ListAPIView):
         kwarg_slug = self.kwargs.get("slug")
         return Comments.objects.filter(posted_id__slug=kwarg_slug).order_by("-pub_date")
 
+class CommentsRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """Provide *RUD functionality for an answer instance to it's author."""
+    queryset = Comments.objects.all()
+    serializer_class = CommentsSerializer
+
 
 
 

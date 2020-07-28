@@ -20,5 +20,9 @@ urlpatterns = [
     path("post/<slug:slug>/comment/", 
          ov.CommentsListCreateAPIView.as_view(),
          name="comment-create"),
-   
+
+    path("comments/<int:pk>/", 
+         ov.CommentsRUDAPIView.as_view(),
+         name="comments-detail"),
+
 ]
