@@ -13,7 +13,7 @@ urlpatterns = [
 
     path('comment/', ov.CommentsListCreateAPIView.as_view()),
 
-    path("post/<slug:slug>/comment/", 
+    path("post/<slug:slug>/comments/", 
          ov.CommentsListAPIView.as_view(),
          name="comment-list"),
 
