@@ -30,10 +30,10 @@ class CommentsListCreateAPIView(generics.CreateAPIView):
     def perform_create(self, serializer):
         request_user = self.request.user
         kwarg_slug = self.kwargs.get('slug')
-        posted_id = get_objects(Post, slug=kwarg_slug)
+        posted_id = get_object_or_404(Post, slug=kwarg_slug)
 
-        # if posted_id.comments.filter(commenter=request_user).exists():
-        #     raise ValidationError("You have already answered this Question!")
+        if posted_id.comments.filter(commenter=request_user).exists():
+            raise ValidationError("You have already left a comment!")
 
         serializer.save(commenter=request_user, posted_id=posted_id)
 
