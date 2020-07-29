@@ -9,18 +9,20 @@ class Post(models.Model):
                                related_name="post_author")
 
     photo = models.ImageField(upload_to='media/', blank=True, null=True)
+    title = models.CharField(max_length=50)
     caption = models.TextField(blank=True, null=True)
-    likes = models.ManyToManyField(settings.AUTH_USER_MODEL,
+    slug = models.SlugField(unique=True)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,
                                    related_name="liker")
 
-    follow = models.ManyToManyField(settings.AUTH_USER_MODEL,
+    follow = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,
                                     related_name="follow_ppl")
 
     published_date = models.DateTimeField(auto_now_add=True)
     # tag_name = models.CharField(max_length=10, blank=True, null=True)
 
     def __str__(self):
-        return self.caption
+        return str(self.caption)
 
 class Comments(models.Model):
     comment = models.CharField(max_length=500)
