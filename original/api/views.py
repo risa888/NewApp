@@ -2,11 +2,14 @@ from django.contrib.auth.models import User
 
 from original.api.serializers import CommentsSerializer, PostSerializer
 from original.api.permissions import IsAuthorOrReadOnly
-from rest_framework.exceptions import ValidationError
-from rest_framework.generics import get_object_or_404
 from original.models import Comments, Post
 
-from rest_framework import generics, viewsets
+from rest_framework import generics, viewsets, status
+from rest_framework.views import APIView
+from rest_framework.exceptions import ValidationError
+from rest_framework.generics import get_object_or_404
+from rest_framework.response import Response
+
 from rest_framework.permissions import IsAuthenticated
 
 
@@ -21,6 +24,37 @@ class PostViewSet(viewsets. ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+class PostLikeAPIView(APIView):
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, slug):
+        
+        post = get_object_or_404(Post, slug=slug)
+        user = request.user
+
+        post.likes.remove(user)
+        post.save()
+
+        serializer_context = {"request": request}
+        serializer = self.serializer_class(post, context=serializer_context)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, slug):
+        
+        post = get_object_or_404(Post, slug=slug)
+        user = request.user
+
+        post.likes.add(user)
+        post.save()
+
+        serializer_context = {"request": request}
+        serializer = self.serializer_class(post, context=serializer_context)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class CommentsListCreateAPIView(generics.CreateAPIView):
     queryset = Comments.objects.all()
