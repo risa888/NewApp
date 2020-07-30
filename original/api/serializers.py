@@ -20,9 +20,7 @@ class CommentsSerializer(serializers.ModelSerializer):
     def get_post_slug(self, instance):
         return instance.posted_id.slug
 
-    # def get_comment(self,instance):
-    #     return instance.comment()
-
+    
 
 
 

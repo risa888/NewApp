@@ -6,7 +6,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'post', ov.PostViewSet)
-# router.register(r'comments', ov.CommentsViewSet)
+
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -23,6 +23,10 @@ urlpatterns = [
 
     path("comments/<int:pk>/", 
          ov.CommentsRUDAPIView.as_view(),
-         name="comments-detail"),
+         name="comments-edit"),
+
+     path("post/<slug:slug>/likes/", 
+         ov.PostLikeAPIView.as_view(),
+         name="post-like"),
 
 ]
