@@ -24,7 +24,7 @@ from users.forms import CustomUserForm
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-     path("accounts/register/",
+    path("accounts/register/",
          RegistrationView.as_view(
              form_class=CustomUserForm,
              success_url="/",

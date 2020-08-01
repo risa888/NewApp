@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 
-from original.api.serializers import CommentsSerializer, PostSerializer
+from original.api.serializers import CommentsSerializer, PostSerializer, PostLikeSerializer
 from original.api.permissions import IsAuthorOrReadOnly
 from original.models import Comments, Post
 
@@ -26,7 +26,7 @@ class PostViewSet(viewsets. ModelViewSet):
         serializer.save(author=self.request.user)
 
 class PostLikeAPIView(APIView):
-    serializer_class = PostSerializer
+    serializer_class = PostLikeSerializer
     permission_classes = [IsAuthenticated]
 
     def delete(self, request, slug):
