@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'crispy_forms',
+    'webpack_loader',
 
 
     'original',
@@ -160,3 +161,10 @@ LOGOUT_REDIRECT_URL = '/'
 
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'dist/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json'),
+    }
+}
