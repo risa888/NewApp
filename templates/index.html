@@ -1,13 +1,7 @@
+{% extends 'base.html' %}
 {% load render_bundle from webpack_loader %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Flowers</title>
-</head>
-<body>
-    <h1>Flowers</h1>
+
+{% block content %}
 
     <noscript>
         <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
@@ -16,5 +10,4 @@
 
       
     {% render_bundle 'app' %}
-</body>
-</html>
+{% endblock %}
