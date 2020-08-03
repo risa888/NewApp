@@ -2,12 +2,13 @@
  <nav class="navbar navbar-expand-lg navbar-light bg-light my-navbar">
     <div class="container">
         <router-link
-                    :to="{ name: 'home' }"
-                    class="navbar-brand"
-                >Flowers🌸
-                </router-link>
+            :to="{ name: 'home' }"
+            class="navbar-brand"
+            >Flowers🌸
+        </router-link>
+
         <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
+         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <router-link
                     :to="{ name: 'home' }"
@@ -45,6 +46,6 @@ export default {
 
 <style>
     .my-navbar {
-        border-bottom: 1px solid #white;
+        border-bottom: 1px solid #fff;
     }
 </style>
