@@ -1,7 +1,11 @@
 <template>
  <nav class="navbar navbar-expand-lg navbar-light bg-light my-navbar">
     <div class="container">
-        
+        <router-link
+                    :to="{ name: 'home' }"
+                    class="navbar-brand"
+                >Flowers🌸
+                </router-link>
         <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -19,7 +23,7 @@
                 </router-link>
             </li>
             <li class="nav-item">
-            <a class="btn btn-sm btn-outline-secondary" href="/accounts/logout">Logout</a>
+            <a class="btn btn-sm btn-outline-secondary" href="/accounts/register/">Logout</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
