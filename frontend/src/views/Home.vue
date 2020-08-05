@@ -1,12 +1,15 @@
 <template>
   <div class="home">
-    <div class="container">
+    <!-- <div class="container">
     </div>
+    <p class="mb-0">Posted by:
+      <span> {{ post.author}}</span>
+      </p> -->
   </div>
 </template>
 
 <script>
-import { apiService } from "../common/api.service"
+import { apiService } from "../common/api.service.js";
 export default {
   name: 'home',
   data() {
