@@ -10,8 +10,10 @@
           <router-link
             :to="{ name: 'post', params: { slug: post.slug } }"
             class="question-link"
-            >{{ post.caption }}
+            >{{ post.title }}
           </router-link>
+          <img class="post-img" :src="post.photo" :alt="post_url">
+
         </h2>
         
       <div class="my-4">
@@ -78,5 +80,8 @@ export default {
 .question-link:hover {
   color: #343A40;
   text-decoration: none;
+}
+.post-img {
+  
 }
 </style>
