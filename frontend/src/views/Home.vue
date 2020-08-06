@@ -1,10 +1,7 @@
 <template>
   <div class="home">
-    <!-- <div class="container">
-    </div>
-    <p class="mb-0">Posted by:
-      <span> {{ post.author}}</span>
-      </p> -->
+    <p>Flowers Home</p>
+    
   </div>
 </template>
 

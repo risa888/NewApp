@@ -18,7 +18,7 @@
             </li>
             <li class="nav-item mx-1">
                 <router-link
-                    :to="{ name: 'home' }"
+                    :to="{ path: '/about' }"
                     class="btn btn-sm btn-danger"
                 >About
                 </router-link>
@@ -33,6 +33,7 @@
         </form>
         </div>
     </div>
+    
 </nav>
 </template>
 
@@ -41,7 +42,7 @@ export default {
     name: "NavbarComponent"
 
 
-}
+};
 </script>
 
 <style>
