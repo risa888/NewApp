@@ -3,7 +3,7 @@ import { CSRF_TOKEN } from "./csrf_token.js"
 async function getJSON(response) {
   if (response.status === 204) return '';
   
-    return response.json();
+    return response.json()
   }
   
 
