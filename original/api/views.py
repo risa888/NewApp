@@ -17,7 +17,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class PostViewSet(viewsets. ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by("-pub_date")
     lookup_field = 'slug'
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticated,IsAuthorOrReadOnly]

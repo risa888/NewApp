@@ -18,7 +18,7 @@ class Post(models.Model):
     follow = models.ManyToManyField(settings.AUTH_USER_MODEL,blank=True,
                                     related_name="follow_ppl")
 
-    published_date = models.DateTimeField(auto_now_add=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
     # tag_name = models.CharField(max_length=10, blank=True, null=True)
 
     def __str__(self):

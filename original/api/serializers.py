@@ -40,7 +40,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     
     def get_published_date(self, instance):
-        return instance.published_date.strftime("%y/%m/%d %H:%M")
+        return instance.pub_date.strftime("%y/%m/%d %H:%M")
 
     def get_comments_count(self, instance):
         return instance.comments.count()

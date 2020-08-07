@@ -12,7 +12,7 @@
             class="question-link"
             ><img class="post-img" :src="post.photo" :alt="post_url">
           </router-link>
-          {{ post.title }}
+        <p class="post-title">{{ post.title }}</p>
         </h2>
         
       <div class="my-4">
