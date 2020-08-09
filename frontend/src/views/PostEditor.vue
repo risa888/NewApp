@@ -1,13 +1,19 @@
 <template>
- <div class="containerr mt-2">
+ <div class="container mt-2">
      <h1 class="mb-3">PostEditor</h1>
      <form @submit.prevent="onSubmit">
-        <textarea
+       <div class="form-group">
+        <textarea 
             v-model="post_body"
             class="form-control"
             placeholder="What do you want to ask"
             rows='3'
         ></textarea>
+       </div>
+       <div class="form-group">
+           <label for="file1">File:</label>
+           <input type="file" id="file1" class="form-control-file">
+       </div>
         <br>
         <button
             type="submit"

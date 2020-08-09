@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="container mt-2">
+    <div class="containerr mt-2">
       <div v-for="post in posts"
            :key="post.pk">
         <p class="mb-0">Posted by:
