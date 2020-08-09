@@ -18,9 +18,9 @@
             </li>
             <li class="nav-item mx-1">
                 <router-link
-                    :to="{ path: '/about' }"
+                    :to="{ name: 'post-editor' }"
                     class="btn btn-sm btn-danger"
-                >About
+                >Update
                 </router-link>
             </li>
             <li class="nav-item">

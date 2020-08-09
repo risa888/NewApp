@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import PostEditor from '../views/PostEditor.vue'
 
 
 Vue.use(VueRouter)
@@ -11,7 +12,11 @@ Vue.use(VueRouter)
     name: 'home',
     component: Home
   },
-  
+  {
+    path: '/update',
+    name: 'post-editor',
+    component: PostEditor
+  },
   {
     path: '/about',
     name: 'About',
