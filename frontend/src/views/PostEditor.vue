@@ -12,7 +12,7 @@
        </div>
        <div class="form-group">
            <label for="file1">File:</label>
-           <input type="file" id="file1" class="form-control-file">
+           <input type="file" id="file1" @change="Upload" class="form-control-file">
        </div>
         <br>
         <button
