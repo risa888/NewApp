@@ -14,6 +14,7 @@
            <label for="file1">File:</label>
            <input type="file" id="file1" @change="Upload" class="form-control-file">
        </div>
+       <img :src="previewSrc" alt="" width="300" />
         <br>
         <button
             type="submit"
@@ -32,6 +33,8 @@ export default {
     data(){
         return{
             post_body: null,
+            file: null,
+            previewSrc: '',
             error: null
         }
     },
@@ -52,12 +55,24 @@ export default {
                     })
                  })
             }
-      }
+        },
 
-    },
+        Upload() {
+              let endpoint = "/api/post/";
+              let method = "POST";
+              apiService(endpoint, method)
+                 .then(post_data => {
+                    this.$router.push({ 
+                        name: 'post',
+                        params: { slug: post_data.slug } 
+                    })
+                })
+        }
+        },
+    
     created() {
         document.title = "Editor - Flowers";
-    }
-    
-}
+    },
+  }   
+
 </script>
