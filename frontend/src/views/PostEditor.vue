@@ -14,7 +14,9 @@
            <label for="file1">File:</label>
            <input type="file" id="file1" @change="Upload" class="form-control-file">
        </div>
-       <img :src="previewSrc" alt="" width="300" />
+       <div class="img-view">
+           <img :src="PreviewSrc" alt="" width="300" />
+       </div>
         <br>
         <button
             type="submit"
@@ -33,7 +35,7 @@ export default {
     data(){
         return{
             post_body: null,
-            file: null,
+            photo: null,
             previewSrc: '',
             error: null
         }
@@ -68,11 +70,11 @@ export default {
                     })
                 })
         }
-        },
+       },
     
     created() {
         document.title = "Editor - Flowers";
     },
-  }   
+}   
 
 </script>
