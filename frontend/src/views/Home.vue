@@ -24,23 +24,24 @@
           >Load More
         </button>
       </div>
-      <div class="follow-btn">
-        <el-botton>Follow</el-botton>
+      <div id="app">
+        <el-date-picker v-model="datetime" type="datetime" placeholder="日時を選択してください"></el-date-picker>
       </div>
     </div>
   </div>
-  </div>
+</div>
 </template>
 
 <script>
 import { apiService } from "@/common/api.service.js";
 export default {
   name: "home",
+         
   data() {
     return {
       posts: [],
       next: null,
-      loadingPosts: false
+      loadingPosts: false,
     }
   },
   methods: {
