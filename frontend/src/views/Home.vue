@@ -24,6 +24,9 @@
           >Load More
         </button>
       </div>
+      <div class="follow-btn">
+        <el-botton>Follow</el-botton>
+      </div>
     </div>
   </div>
   </div>
