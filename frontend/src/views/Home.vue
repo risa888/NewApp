@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="containerr mt-2">
+   <div class="containerr mt-2">
       <div v-for="post in posts"
            :key="post.pk">
         <p class="mb-0">Posted by:
@@ -29,12 +29,19 @@
       </div>
     </div>
   </div>
+  <article-posts />
+  <app-footer />
 </div>
 </template>
 
 <script>
 import { apiService } from "@/common/api.service.js";
+import AppFooter from "@/views/Footer.vue";
+
 export default {
+  components: {
+    AppFooter
+  },
   name: "home",
          
   data() {
