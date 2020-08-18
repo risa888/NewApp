@@ -12,12 +12,12 @@
        </div>
        <div class="form-group">
            <label for="file1">File:</label>
-           <input type="file" accept='media/*' @change="inputFile" class="form-control-file">
+           <input type="file" accept='image/*' @change="inputFile" class="form-control-file"><br>
        </div>
        <div class="img-view">
            <img :src="PreviewSrc" alt="" width="300" />
        </div> 
-       <br>
+       
         <button
             type="submit"
             class="btn btn-success"
@@ -39,7 +39,7 @@ export default {
         return{
             post_body: null,
             file: null,
-            previewSrc: '',
+            PreviewSrc: "",
             error: null
         }
     },
@@ -51,17 +51,17 @@ export default {
             };
             reader.readAsDataURL(e);
             this.file = e;
-
+              debugger
         },
         onSubmit() {
             if(!this.post_body) {
               this.error = "You can't send an empty post!";
-            } else if (this.post_body.length > 50) {
+            } else if (this.post_body.length > 25) {
               this.error = "Error! " ;
             } else {
               let endpoint = "/api/post/";
               let method = "POST";
-              apiService(endpoint, method, { title: this.post_body })
+              apiService(endpoint, method, { title: this.post_body },{ photo: this.file })
                  .then(post_data => {
                     this.$router.push({ 
                         name: 'post',
