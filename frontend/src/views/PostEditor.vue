@@ -12,12 +12,12 @@
        </div>
        <div class="form-group">
            <label for="file1">File:</label>
-           <input type="file" id="file1" @change="Upload" class="form-control-file">
+           <input type="file" accept='media/*' @change="inputFile" class="form-control-file">
        </div>
-       <!-- <div class="img-view">
+       <div class="img-view">
            <img :src="PreviewSrc" alt="" width="300" />
-       </div> -->
-        <br>
+       </div> 
+       <br>
         <button
             type="submit"
             class="btn btn-success"
@@ -30,17 +30,29 @@
 
 <script>
 import { apiService } from "@/common/api.service.js";
+
+const reader = new FileReader();
+
 export default {
     name: "PostEditor",
     data(){
         return{
             post_body: null,
-            photo_body: null,
-            // previewSrc: '',
+            file: null,
+            previewSrc: '',
             error: null
         }
     },
     methods: {
+        inputFile:function(e) {
+            reader.onload = e => {
+                this.PreviewSrc = e.target.result;
+
+            };
+            reader.readAsDataURL(e);
+            this.file = e;
+
+        },
         onSubmit() {
             if(!this.post_body) {
               this.error = "You can't send an empty post!";
