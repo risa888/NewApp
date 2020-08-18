@@ -10,7 +10,7 @@
           <router-link
             :to="{ name: 'post', params: { slug: post.slug } }"
             class="question-link"
-            ><img class="post-img" :src="post.photo" :alt="post_url">
+            ><img class="post-img" :src="post.photo" alt="">
           </router-link>
         <p class="post-title">{{ post.title }}</p>
         </h2>
@@ -24,12 +24,8 @@
           >Load More
         </button>
       </div>
-      <div id="app">
-        <el-date-picker v-model="datetime" type="datetime" placeholder="日時を選択してください"></el-date-picker>
-      </div>
     </div>
   </div>
-  <article-posts />
   <app-footer />
 </div>
 </template>
