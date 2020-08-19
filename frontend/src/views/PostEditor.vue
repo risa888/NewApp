@@ -64,7 +64,7 @@ export default {
               apiService(endpoint, method, { title: this.post_body },{ photo: this.file })
                  .then(post_data => {
                     this.$router.push({ 
-                        name: 'post',
+                        name: 'home',
                         params: { slug: post_data.slug } 
                     })
                  })
