@@ -48,10 +48,10 @@ export default {
             reader.onload = e => {
                 this.PreviewSrc = e.target.result;
 
-            };
-            reader.readAsDataURL(e);
-            this.file = e;
-              debugger
+            }
+            reader.readAsDataURL(e.target.files[0]);
+            
+              
         },
         onSubmit() {
             if(!this.post_body) {
