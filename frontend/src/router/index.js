@@ -12,16 +12,16 @@ Vue.use(VueRouter)
     name: 'home',
     component: Home
   },
-  {
-    path: '/update',
-    name: 'post',
-    component: PostEditor
-  },
   // {
   //   path: '/update',
-  //   name: 'post-editor',
+  //   name: 'post',
   //   component: PostEditor
   // },
+  {
+    path: '/update',
+    name: 'post-editor',
+    component: PostEditor
+  },
   // {
   //   // with props: true, the slug parameter gets passed as a prop to the component
   //   path: "/post/:slug",

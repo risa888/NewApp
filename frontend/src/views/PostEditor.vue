@@ -12,7 +12,7 @@
        </div>
        <div class="form-group">
            <label for="file1">File:</label>
-           <input type="file" accept='image/*' @change="inputFile" class="form-control-file"><br>
+           <input type="file" accept='image/*' @change="inputFile" class="selected_file"><br>
        </div>
        <div class="img-view">
            <img :src="PreviewSrc" alt="" width="300" />
