@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { apiService } from "@/common/api.service.js";
+// import { apiService } from "@/common/api.service.js";
 
 const reader = new FileReader();
 
@@ -50,43 +50,53 @@ export default {
 
             }
             reader.readAsDataURL(e.target.files[0]);
-            
+
               
         },
-        onSubmit() {
-            if(!this.post_body) {
-              this.error = "You can't send an empty post!";
-            } else if (this.post_body.length > 25) {
-              this.error = "Error! " ;
-            } else {
-              let endpoint = "/api/post/";
-              let method = "POST";
-              apiService(endpoint, method, { title: this.post_body },{ photo: this.file })
-                 .then(post_data => {
-                    this.$router.push({ 
-                        name: 'home',
-                        params: { slug: post_data.slug } 
-                    })
-                 })
+        async onSubmit(){
+            const config = {
+               
+                headers: { 'content-type': 'multipart/form-data' }
             }
-        },
-
-    //     Upload() {
-    //           let endpoint = "/api/post/";
-    //           let method = "POST";
-    //           apiService(endpoint, method)
+            const formData = new FormData();
+            for (const data in this.file) {
+                formData.append(data, this.file[data])
+            }
+            try {
+                const response = await this.$axios.$post('/api/post/', formData, config)
+                this.$router.push('/')
+            } catch (e) {
+                console.log(e)
+            }
+           }
+         }
+    }
+    //                 }
+    //             }
+    //     onSubmit: function() {
+    //         const params = new FormData();
+    //         params.append('file', this.file);
+    //         params.append('title', this.title);
+    //         apiService(endpoint, method, { title: this.post_body },{ photo: this.file })
     //              .then(post_data => {
-    //                 this.$router.push({ 
-    //                     name: 'post',
+    //                 if(!this.post_body) {
+    //                 this.error = "You can't send an empty post!";
+    //                 } else if (this.post_body.length > 25) {
+    //                 this.error = "Error! " ;
+    //                 } else {
+    //                 let endpoint = "/api/post/";
+    //                 let method = "POST";this.$router.push({ 
+    //                     name: 'home',
     //                     params: { slug: post_data.slug } 
-    //                 })
-    //             })
-    //     }
-       },
+    //                     })     
+                    
+    //                   }
+    //                })
+        
+    //      },  
     
-    created() {
-        document.title = "Editor - Flowers";
-    },
-}   
-
-</script>
+    //     created() {
+    //        document.title = "Editor - Flowers";
+    //     }
+    // }
+ </script>
