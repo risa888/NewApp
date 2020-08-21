@@ -24,11 +24,15 @@ from users.forms import CustomUserForm
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-     path("accounts/register/",
+    path("accounts/register/",
          RegistrationView.as_view(
              form_class=CustomUserForm,
              success_url="/",
              ), name="django_registration_register"), 
+
+    path("accounts/",
+         include("django_registration.backends.one_step.urls")),
+
 
     path('accounts/',
          include('django.contrib.auth.urls')),
@@ -47,6 +51,8 @@ urlpatterns = [
 
     path('api/rest-auth/registration/',
          include('rest_auth.registration.urls')),
+
+    path('',IndexTemplateView.as_view(), name="entry-point"),
 
 
      re_path(r"^(?!.*/media).+$", IndexTemplateView.as_view(), name="entry-point")

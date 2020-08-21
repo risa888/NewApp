@@ -34,16 +34,13 @@ class PostSerializer(serializers.ModelSerializer):
     comments_count = serializers.SerializerMethodField()
     user_has_commented = serializers.SerializerMethodField()
 
-
-
-
     class Meta:
         model = Post
         exclude = ['likes','follow']
 
     
     def get_published_date(self, instance):
-        return instance.published_date.strftime("%y/%m/%d %H:%M")
+        return instance.pub_date.strftime("%y/%m/%d %H:%M")
 
     def get_comments_count(self, instance):
         return instance.comments.count()
@@ -58,6 +55,27 @@ class PostSerializer(serializers.ModelSerializer):
     def user_has_commented(self, instance):
         request = self.context.get("request")
         return instance.comments.filter(author=request.user).exists()
+
+
+class PostLikeSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField(read_only=True)
+    likes_count = serializers.SerializerMethodField(read_only=True)
+    slug = serializers.SlugField(read_only=True)
+    user_has_commented = serializers.SerializerMethodField()
+
+
+    def get_likes_count(self, instance):
+        return instance.likes.count()
+
+    def user_has_commented(self, instance):
+        request = self.context.get("request")
+        return instance.comments.filter(author=request.user).exists()
+
+
+
+    class Meta:
+        model = Post
+        fields = ['likes','follow']
 
 
 
